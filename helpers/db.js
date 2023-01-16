@@ -26,6 +26,13 @@ async function getAllPlaces() {
   return places;
 }
 
+async function getPlace(id) {
+  await connectDatabase();
+  const place = await Place.findOne({ id });
+  console.log(place);
+  return place;
+}
+
 async function createPlace(place) {
   await connectDatabase();
 
@@ -36,4 +43,4 @@ async function createPlace(place) {
   return createdPlace;
 }
 
-export { getAllPlaces, createPlace };
+export { getAllPlaces, getPlace, createPlace };
