@@ -1,8 +1,9 @@
-import places from "../../../lib/db.json";
+import { getAllPlaces } from "../../../helpers/db.js";
 
-export default function handler(request, response) {
+export default async function handler(request, response) {
   switch (request.method) {
     case "GET": {
+      const places = await getAllPlaces();
       response.status(200).json(places);
       break;
     }
