@@ -3,6 +3,7 @@ import Card from "../components/Card.js";
 import TitleBar from "../components/TitleBar.js";
 import useSWR from "swr";
 import Link from "next/link.js";
+import { StyledLink } from "../components/StyledLink.js";
 
 const fetcher = async (...args) => {
   const response = await fetch(...args);
@@ -22,11 +23,15 @@ const List = styled.ul`
   padding-left: 0;
 `;
 
+const Wrapper = styled.div`
+  position: relative;
+`;
+
 export default function Home() {
   const { data: places } = useSWR("/api/places", fetcher, { fallbackData: [] });
 
   return (
-    <>
+    <Wrapper>
       <TitleBar />
       <List>
         {places.map((place) => {
@@ -40,7 +45,9 @@ export default function Home() {
           );
         })}
       </List>
-      <Link href="/create">+ place</Link>
-    </>
+      <Link href="/create" passHref legacyBehavior>
+        <StyledLink variant="fixed">+ place</StyledLink>
+      </Link>
+    </Wrapper>
   );
 }
