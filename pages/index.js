@@ -5,14 +5,6 @@ import useSWR from "swr";
 import Link from "next/link.js";
 import { StyledLink } from "../components/StyledLink.js";
 
-const fetcher = async (...args) => {
-  const response = await fetch(...args);
-  if (!response.ok) {
-    throw new Error(`Request with ${JSON.stringify(args)} failed.`);
-  }
-  return await response.json();
-};
-
 const List = styled.ul`
   list-style: none;
   margin-top: 5rem;
@@ -28,7 +20,7 @@ const Wrapper = styled.div`
 `;
 
 export default function Home() {
-  const { data: places } = useSWR("/api/places", fetcher, { fallbackData: [] });
+  const { data: places } = useSWR("/api/places", { fallbackData: [] });
 
   return (
     <Wrapper>
