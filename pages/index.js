@@ -37,7 +37,7 @@ export default function Home() {
         {places.map((place) => {
           return (
             <Card
-              key={place._id}
+              key={place.id}
               name={place.name}
               image={place.image}
               location={place.location}
