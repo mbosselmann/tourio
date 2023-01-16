@@ -18,6 +18,7 @@ const List = styled.ul`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  padding-left: 0;
 `;
 
 export default function Home() {
