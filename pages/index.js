@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Card from "../components/Card.js";
 import TitleBar from "../components/TitleBar.js";
 import useSWR from "swr";
+import Link from "next/link.js";
 
 const fetcher = async (...args) => {
   const response = await fetch(...args);
@@ -39,6 +40,7 @@ export default function Home() {
           );
         })}
       </List>
+      <Link href="/create">+ place</Link>
     </>
   );
 }
