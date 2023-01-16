@@ -23,6 +23,14 @@ export default function DetailsPage() {
 
   if (!isReady || isLoading || error) return <h2>Loading...</h2>;
 
+  async function deletePlace() {
+    await fetch(`/api/places/${id}`, {
+      method: "DELETE",
+    });
+
+    router.push("/");
+  }
+
   return (
     <>
       <Link href={"/"} passHref legacyBehavior>
@@ -46,6 +54,9 @@ export default function DetailsPage() {
         <StyledLink variant="outlined">Location on Google Maps</StyledLink>
       </Link>
       <p>{place.description}</p>
+      <button onClick={deletePlace} type="button">
+        DELETE
+      </button>
     </>
   );
 }

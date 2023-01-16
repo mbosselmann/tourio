@@ -43,4 +43,11 @@ async function createPlace(place) {
   return createdPlace;
 }
 
-export { getAllPlaces, getPlace, createPlace };
+async function deletePlace(id) {
+  await connectDatabase();
+  const deletedPlace = getPlace(id);
+  await Place.deleteOne({ id });
+  return deletedPlace;
+}
+
+export { getAllPlaces, getPlace, createPlace, deletePlace };
