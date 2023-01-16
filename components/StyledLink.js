@@ -19,6 +19,14 @@ export const StyledLink = styled.a`
   ${({ variant }) =>
     variant === "alignSelf" &&
     css`
-      align-self: flex-start;
+      justify-self: start;
+    `}
+
+    ${({ variant }) =>
+    variant === "outlined" &&
+    css`
+      text-align: center;
+      background-color: white;
+      border: 3px solid lightsalmon;
     `}
 `;

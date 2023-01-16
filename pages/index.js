@@ -7,7 +7,6 @@ import { StyledLink } from "../components/StyledLink.js";
 
 const List = styled.ul`
   list-style: none;
-  margin-top: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +14,7 @@ const List = styled.ul`
   padding-left: 0;
 `;
 
-const Wrapper = styled.div`
+const ListItem = styled.li`
   position: relative;
 `;
 
@@ -23,23 +22,24 @@ export default function Home() {
   const { data: places } = useSWR("/api/places", { fallbackData: [] });
 
   return (
-    <Wrapper>
-      <TitleBar />
-      <List>
+    <>
+      <List role="list">
         {places.map((place) => {
           return (
-            <Card
-              key={place.id}
-              name={place.name}
-              image={place.image}
-              location={place.location}
-            />
+            <ListItem key={place.id}>
+              <Card
+                name={place.name}
+                image={place.image}
+                location={place.location}
+                id={place.id}
+              />
+            </ListItem>
           );
         })}
       </List>
       <Link href="/create" passHref legacyBehavior>
         <StyledLink variant="fixed">+ place</StyledLink>
       </Link>
-    </Wrapper>
+    </>
   );
 }
