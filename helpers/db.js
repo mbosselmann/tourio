@@ -29,7 +29,6 @@ async function getAllPlaces() {
 async function getPlace(id) {
   await connectDatabase();
   const place = await Place.findOne({ id });
-  console.log(place);
   return place;
 }
 
@@ -50,4 +49,14 @@ async function deletePlace(id) {
   return deletedPlace;
 }
 
-export { getAllPlaces, getPlace, createPlace, deletePlace };
+async function updatePlace(id, place) {
+  await connectDatabase();
+
+  await Place.updateOne({ id }, place);
+
+  const updatedPlace = getPlace(id);
+
+  return updatedPlace;
+}
+
+export { getAllPlaces, getPlace, createPlace, deletePlace, updatePlace };
