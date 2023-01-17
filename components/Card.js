@@ -1,11 +1,17 @@
 import Link from "next/link.js";
-import Image from "next/image.js";
 import styled from "styled-components";
+import { StyledImage } from "./StyledImage.js";
 
 const Article = styled.article`
   border: 5px solid black;
   border-radius: 0.8rem;
   padding: 0.5rem;
+`;
+
+const Figure = styled.figure`
+  position: relative;
+  margin: 0;
+  height: 10rem;
 `;
 
 const Anchor = styled.a`
@@ -35,10 +41,17 @@ const ScreenReaderOnly = styled.span`
 export default function Card({ name, image, location, id }) {
   return (
     <Article>
-      <figure>
-        <Image src={image} width={250} height={150} alt="" />
+      <Figure>
+        <StyledImage
+          src={image}
+          fill
+          sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+          alt=""
+        />
         <figcaption>{name}</figcaption>
-      </figure>
+      </Figure>
       <p>Location: {location}</p>
       <Link href={`places/${id}`} passHref legacyBehavior>
         <Anchor>

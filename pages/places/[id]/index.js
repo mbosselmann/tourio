@@ -5,6 +5,7 @@ import useSWR from "swr";
 import styled from "styled-components";
 import { StyledLink } from "../../../components/StyledLink.js";
 import { StyledButton } from "../../../components/StyledButton.js";
+import { StyledImage } from "../../../components/StyledImage.js";
 
 const ImageContainer = styled.div`
   position: relative;
@@ -20,10 +21,6 @@ const ButtonContainer = styled.section`
     flex-grow: 1;
     text-align: center;
   }
-`;
-
-const StyledImage = styled(Image)`
-  object-fit: cover;
 `;
 
 export default function DetailsPage() {
