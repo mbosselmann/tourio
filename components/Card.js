@@ -8,10 +8,14 @@ const Article = styled.article`
   padding: 0.5rem;
 `;
 
+const ImageContainer = styled.div`
+  position: relative;
+  height: 10rem;
+`;
+
 const Figure = styled.figure`
   position: relative;
   margin: 0;
-  height: 10rem;
 `;
 
 const Anchor = styled.a`
@@ -42,14 +46,16 @@ export default function Card({ name, image, location, id }) {
   return (
     <Article>
       <Figure>
-        <StyledImage
-          src={image}
-          fill
-          sizes="(max-width: 768px) 100vw,
+        <ImageContainer>
+          <StyledImage
+            src={image}
+            fill
+            sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
               33vw"
-          alt=""
-        />
+            alt=""
+          />
+        </ImageContainer>
         <figcaption>{name}</figcaption>
       </Figure>
       <p>Location: {location}</p>
