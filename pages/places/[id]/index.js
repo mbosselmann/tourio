@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router.js";
 import useSWR from "swr";
 import styled from "styled-components";
-import { StyledLink } from "../../components/StyledLink.js";
+import { StyledLink } from "../../../components/StyledLink.js";
 
 const ImageContainer = styled.div`
   position: relative;
@@ -54,6 +54,7 @@ export default function DetailsPage() {
         <StyledLink variant="outlined">Location on Google Maps</StyledLink>
       </Link>
       <p>{place.description}</p>
+      <Link href={`/places/${id}/edit`}>Edit</Link>
       <button onClick={deletePlace} type="button">
         DELETE
       </button>

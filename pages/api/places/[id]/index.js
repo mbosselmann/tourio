@@ -1,4 +1,4 @@
-import { getPlace, deletePlace } from "../../../helpers/db.js";
+import { getPlace, deletePlace, updatePlace } from "../../../../helpers/db.js";
 
 export default async function handler(request, response) {
   switch (request.method) {
@@ -24,10 +24,22 @@ export default async function handler(request, response) {
       }
       break;
     }
+    case "PATCH": {
+      const place = JSON.parse(request.body);
+      const updatedPlace = await updatePlace(request.query.id, place);
+      if (!updatedPlace) {
+        response.status(404).json({
+          message: `Place ${request.query.id} was not found.`,
+        });
+      } else {
+        response.status(200).json(updatedPlace);
+      }
+      break;
+    }
     default: {
       response
         .status(405)
-        .setHeader("Allow", "GET,DELETE")
+        .setHeader("Allow", "GET,DELETE,PATCH")
         .json({
           message: `Request method ${request.method} is not allowed on ${request.url}`,
         });
