@@ -4,14 +4,26 @@ import { useRouter } from "next/router.js";
 import useSWR from "swr";
 import styled from "styled-components";
 import { StyledLink } from "../../../components/StyledLink.js";
+import { StyledButton } from "../../../components/StyledButton.js";
 
 const ImageContainer = styled.div`
   position: relative;
   height: 15rem;
 `;
 
+const ButtonContainer = styled.section`
+  display: flex;
+  justify-content: space-between;
+  gap: 0.2rem;
+
+  & > * {
+    flex-grow: 1;
+    text-align: center;
+  }
+`;
+
 const StyledImage = styled(Image)`
-  object-fit: contain;
+  object-fit: cover;
 `;
 
 export default function DetailsPage() {
@@ -54,10 +66,14 @@ export default function DetailsPage() {
         <StyledLink variant="outlined">Location on Google Maps</StyledLink>
       </Link>
       <p>{place.description}</p>
-      <Link href={`/places/${id}/edit`}>Edit</Link>
-      <button onClick={deletePlace} type="button">
-        DELETE
-      </button>
+      <ButtonContainer>
+        <Link href={`/places/${id}/edit`} passHref legacyBehavior>
+          <StyledLink>Edit</StyledLink>
+        </Link>
+        <StyledButton onClick={deletePlace} type="button">
+          Delete
+        </StyledButton>
+      </ButtonContainer>
     </>
   );
 }
