@@ -1,19 +1,9 @@
 import styled from "styled-components";
+import { StyledButton } from "./StyledButton.js";
 
 const FormContainer = styled.form`
   display: grid;
   gap: 0.5rem;
-`;
-
-const Button = styled.button`
-  background-color: lightsalmon;
-  padding: 0.8rem;
-  border-radius: 0.6rem;
-  color: black;
-  text-decoration: none;
-  font-weight: bold;
-  border: none;
-  font-size: inherit;
 `;
 
 const Input = styled.input`
@@ -81,9 +71,9 @@ export default function Form({ onSubmit, formName, defaultData }) {
           rows="10"
           defaultValue={defaultData?.description}
         ></Textarea>
-        <Button type="submit">
+        <StyledButton type="submit">
           {defaultData ? "Update place" : "Add place"}
-        </Button>
+        </StyledButton>
       </FormContainer>
     </>
   );
