@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const StyledButton = styled.button`
   background-color: lightsalmon;
@@ -9,4 +9,11 @@ export const StyledButton = styled.button`
   font-weight: bold;
   border: none;
   font-size: inherit;
+
+  ${({ variant }) =>
+    variant === "delete" &&
+    css`
+      background-color: firebrick;
+      color: white;
+    `}
 `;
