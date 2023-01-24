@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 import useSWR from "swr";
-import { StyledLink } from "../../../components/StyledLink.js";
 import Form from "../../../components/Form.js";
+import { StyledBackLink } from "../../../components/StyledBackLink.js";
 
 export default function EditPage() {
   const router = useRouter();
@@ -25,7 +25,7 @@ export default function EditPage() {
     <>
       <h2 id="edit-place">Edit Place</h2>
       <Link href={`/places/${id}`} passHref legacyBehavior>
-        <StyledLink variant="alignSelf">back</StyledLink>
+        <StyledBackLink>back</StyledBackLink>
       </Link>
       <Form onSubmit={editPlace} formName={"edit-place"} defaultData={place} />
     </>

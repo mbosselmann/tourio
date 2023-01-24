@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Card from "../components/Card.js";
-import TitleBar from "../components/TitleBar.js";
 import useSWR from "swr";
 import Link from "next/link.js";
 import { StyledLink } from "../components/StyledLink.js";
@@ -17,6 +16,12 @@ const List = styled.ul`
 const ListItem = styled.li`
   position: relative;
   width: 100%;
+`;
+
+const StyledAddPlaceLink = styled(StyledLink)`
+  position: fixed;
+  bottom: 50px;
+  left: 70%;
 `;
 
 export default function Home() {
@@ -39,7 +44,7 @@ export default function Home() {
         })}
       </List>
       <Link href="/create" passHref legacyBehavior>
-        <StyledLink variant="fixed">+ place</StyledLink>
+        <StyledAddPlaceLink>+ place</StyledAddPlaceLink>
       </Link>
     </>
   );

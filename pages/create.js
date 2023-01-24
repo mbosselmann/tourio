@@ -3,6 +3,10 @@ import { useRouter } from "next/router";
 import Form from "../components/Form.js";
 import { StyledLink } from "../components/StyledLink.js";
 
+const StyledBackLink = styled(StyledLink)`
+  justify-self: flex-start;
+`;
+
 export default function CreatePlacePage() {
   const router = useRouter();
 
@@ -19,7 +23,7 @@ export default function CreatePlacePage() {
     <>
       <h2 id="add-place">Add Place</h2>
       <Link href="/" passHref legacyBehavior>
-        <StyledLink variant="alignSelf">back</StyledLink>
+        <StyledBackLink>back</StyledBackLink>
       </Link>
       <Form onSubmit={addPlace} formName={"add-place"} />
     </>

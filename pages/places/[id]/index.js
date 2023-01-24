@@ -1,4 +1,3 @@
-import Image from "next/image.js";
 import Link from "next/link";
 import { useRouter } from "next/router.js";
 import useSWR from "swr";
@@ -6,6 +5,7 @@ import styled from "styled-components";
 import { StyledLink } from "../../../components/StyledLink.js";
 import { StyledButton } from "../../../components/StyledButton.js";
 import { StyledImage } from "../../../components/StyledImage.js";
+import { StyledBackLink } from "../../../components/StyledBackLink.js";
 
 const ImageContainer = styled.div`
   position: relative;
@@ -21,6 +21,12 @@ const ButtonContainer = styled.section`
     flex-grow: 1;
     text-align: center;
   }
+`;
+
+const StyledLocationLink = styled(StyledLink)`
+  text-align: center;
+  background-color: white;
+  border: 3px solid lightsalmon;
 `;
 
 export default function DetailsPage() {
@@ -43,7 +49,7 @@ export default function DetailsPage() {
   return (
     <>
       <Link href={"/"} passHref legacyBehavior>
-        <StyledLink variant="alignSelf">back</StyledLink>
+        <StyledBackLink>back</StyledBackLink>
       </Link>
       <ImageContainer>
         <StyledImage
@@ -60,7 +66,7 @@ export default function DetailsPage() {
         {place.name}, {place.location}
       </h2>
       <Link href={place.mapURL} passHref legacyBehavior>
-        <StyledLink variant="outlined">Location on Google Maps</StyledLink>
+        <StyledLocationLink>Location on Google Maps</StyledLocationLink>
       </Link>
       <p>{place.description}</p>
       <ButtonContainer>
