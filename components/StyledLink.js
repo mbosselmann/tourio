@@ -8,21 +8,20 @@ export const StyledLink = styled.a`
   text-decoration: none;
   font-weight: bold;
 
-  ${({ variant }) =>
-    variant === "fixed" &&
+  /* ${({ position }) =>
+    position === "fixed" &&
     css`
       position: fixed;
       bottom: 50px;
       left: 70%;
+    `} */
+  ${({ justifySelf }) =>
+    justifySelf &&
+    css`
+      justify-self: ${justifySelf};
     `}
 
   ${({ variant }) =>
-    variant === "alignSelf" &&
-    css`
-      justify-self: start;
-    `}
-
-    ${({ variant }) =>
     variant === "outlined" &&
     css`
       text-align: center;
