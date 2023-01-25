@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Card from "../components/Card.js";
-import TitleBar from "../components/TitleBar.js";
 import useSWR from "swr";
 import Link from "next/link.js";
 import { StyledLink } from "../components/StyledLink.js";

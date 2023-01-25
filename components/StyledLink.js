@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const StyledLink = styled.a`
   background-color: lightsalmon;
@@ -8,13 +8,6 @@ export const StyledLink = styled.a`
   text-decoration: none;
   font-weight: bold;
 
-  /* ${({ position }) =>
-    position === "fixed" &&
-    css`
-      position: fixed;
-      bottom: 50px;
-      left: 70%;
-    `} */
   ${({ justifySelf }) =>
     justifySelf &&
     css`
