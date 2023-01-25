@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const StyledLink = styled.a`
   background-color: lightsalmon;
@@ -7,4 +7,18 @@ export const StyledLink = styled.a`
   color: black;
   text-decoration: none;
   font-weight: bold;
+
+  ${({ justifySelf }) =>
+    justifySelf &&
+    css`
+      justify-self: ${justifySelf};
+    `}
+
+  ${({ variant }) =>
+    variant === "outlined" &&
+    css`
+      text-align: center;
+      background-color: white;
+      border: 3px solid lightsalmon;
+    `}
 `;

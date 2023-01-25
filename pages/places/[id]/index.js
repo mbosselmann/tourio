@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { StyledLink } from "../../../components/StyledLink.js";
 import { StyledButton } from "../../../components/StyledButton.js";
 import { StyledImage } from "../../../components/StyledImage.js";
-import { StyledBackLink } from "../../../components/StyledBackLink.js";
 
 const ImageContainer = styled.div`
   position: relative;
@@ -49,7 +48,7 @@ export default function DetailsPage() {
   return (
     <>
       <Link href={"/"} passHref legacyBehavior>
-        <StyledBackLink>back</StyledBackLink>
+        <StyledLink justifySelf="start">back</StyledLink>
       </Link>
       <ImageContainer>
         <StyledImage

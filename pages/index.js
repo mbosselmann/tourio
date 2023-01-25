@@ -17,13 +17,11 @@ const ListItem = styled.li`
   position: relative;
   width: 100%;
 `;
-
-const StyledAddPlaceLink = styled(StyledLink)`
+const FixedLink = styled(StyledLink)`
   position: fixed;
   bottom: 50px;
-  left: 70%;
+  right: 50px;
 `;
-
 export default function Home() {
   const { data: places } = useSWR("/api/places", { fallbackData: [] });
 
@@ -44,7 +42,7 @@ export default function Home() {
         })}
       </List>
       <Link href="/create" passHref legacyBehavior>
-        <StyledAddPlaceLink>+ place</StyledAddPlaceLink>
+        <FixedLink>+ place</FixedLink>
       </Link>
     </>
   );
