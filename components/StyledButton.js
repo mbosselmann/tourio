@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const StyledButton = styled.button`
-  background-color: lightsalmon;
+  background-color: ${({ disabled }) => (disabled ? "black" : "lightsalmon")};
   padding: 0.8rem;
   border-radius: 0.6rem;
   color: black;

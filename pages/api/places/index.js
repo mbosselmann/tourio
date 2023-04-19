@@ -11,6 +11,7 @@ export default async function handler(request, response) {
       const place = JSON.parse(request.body);
       const createdPlace = await createPlace(place);
       response.status(201).json(createdPlace);
+      break;
     }
     default: {
       response
@@ -19,6 +20,7 @@ export default async function handler(request, response) {
         .json({
           message: `Request method ${request.method} is not allowed on ${request.url}`,
         });
+      break;
     }
   }
 }

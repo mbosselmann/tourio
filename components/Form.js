@@ -24,7 +24,7 @@ const Label = styled.label`
   font-weight: bold;
 `;
 
-export default function Form({ onSubmit, formName, defaultData }) {
+export default function Form({ onSubmit, formName, defaultData, disabled }) {
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -40,6 +40,8 @@ export default function Form({ onSubmit, formName, defaultData }) {
         name="name"
         type="text"
         defaultValue={defaultData?.name}
+        disabled={disabled}
+        required
       />
       <Label htmlFor="image-url">Image Url</Label>
       <Input
@@ -47,6 +49,8 @@ export default function Form({ onSubmit, formName, defaultData }) {
         name="image"
         type="text"
         defaultValue={defaultData?.image}
+        disabled={disabled}
+        required
       />
       <Label htmlFor="location">Location</Label>
       <Input
@@ -54,6 +58,8 @@ export default function Form({ onSubmit, formName, defaultData }) {
         name="location"
         type="text"
         defaultValue={defaultData?.location}
+        disabled={disabled}
+        required
       />
       <Label htmlFor="map-url">Map Url</Label>
       <Input
@@ -61,6 +67,8 @@ export default function Form({ onSubmit, formName, defaultData }) {
         name="mapURL"
         type="text"
         defaultValue={defaultData?.mapURL}
+        disabled={disabled}
+        required
       />
       <Label htmlFor="description">Description</Label>
       <Textarea
@@ -69,8 +77,9 @@ export default function Form({ onSubmit, formName, defaultData }) {
         cols="30"
         rows="10"
         defaultValue={defaultData?.description}
+        disabled={disabled}
       ></Textarea>
-      <StyledButton type="submit">
+      <StyledButton type="submit" disabled={disabled}>
         {defaultData ? "Update place" : "Add place"}
       </StyledButton>
     </FormContainer>

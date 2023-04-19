@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { StyledLink } from "../../../components/StyledLink.js";
 import { StyledButton } from "../../../components/StyledButton.js";
 import { StyledImage } from "../../../components/StyledImage.js";
+import useSWRMutation from "swr/mutation";
 
 const ImageContainer = styled.div`
   position: relative;
@@ -28,6 +29,12 @@ const StyledLocationLink = styled(StyledLink)`
   border: 3px solid lightsalmon;
 `;
 
+async function deletePlace(url) {
+  await fetch(url, {
+    method: "DELETE",
+  });
+}
+
 export default function DetailsPage() {
   const router = useRouter();
   const { isReady } = router;
@@ -35,15 +42,9 @@ export default function DetailsPage() {
 
   const { data: place, isLoading, error } = useSWR(`/api/places/${id}`);
 
+  const { trigger } = useSWRMutation(`/api/places/${id}`, deletePlace);
+
   if (!isReady || isLoading || error) return <h2>Loading...</h2>;
-
-  async function deletePlace() {
-    await fetch(`/api/places/${id}`, {
-      method: "DELETE",
-    });
-
-    router.push("/");
-  }
 
   return (
     <>
@@ -72,7 +73,14 @@ export default function DetailsPage() {
         <Link href={`/places/${id}/edit`} passHref legacyBehavior>
           <StyledLink>Edit</StyledLink>
         </Link>
-        <StyledButton onClick={deletePlace} type="button" variant="delete">
+        <StyledButton
+          onClick={async () => {
+            await trigger();
+            router.push("/");
+          }}
+          type="button"
+          variant="delete"
+        >
           Delete
         </StyledButton>
       </ButtonContainer>

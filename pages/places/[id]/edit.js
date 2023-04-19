@@ -3,6 +3,14 @@ import Link from "next/link";
 import useSWR from "swr";
 import Form from "../../../components/Form.js";
 import { StyledLink } from "../../../components/StyledLink.js";
+import useSWRMutation from "swr/mutation";
+
+async function editPlace(url, { arg: place }) {
+  await fetch(url, {
+    method: "PATCH",
+    body: JSON.stringify(place),
+  });
+}
 
 export default function EditPage() {
   const router = useRouter();
@@ -10,14 +18,7 @@ export default function EditPage() {
   const { id } = router.query;
   const { data: place, isLoading, error } = useSWR(`/api/places/${id}`);
 
-  async function editPlace(place) {
-    await fetch(`/api/places/${id}`, {
-      method: "PATCH",
-      body: JSON.stringify(place),
-    });
-
-    router.push("/");
-  }
+  const { trigger } = useSWRMutation(`/api/places/${id}`, editPlace);
 
   if (!isReady || isLoading || error) return <h2>Loading...</h2>;
 
@@ -27,7 +28,14 @@ export default function EditPage() {
       <Link href={`/places/${id}`} passHref legacyBehavior>
         <StyledLink justifySelf="start">back</StyledLink>
       </Link>
-      <Form onSubmit={editPlace} formName={"edit-place"} defaultData={place} />
+      <Form
+        onSubmit={async (place) => {
+          await trigger(place);
+          router.push("/");
+        }}
+        formName={"edit-place"}
+        defaultData={place}
+      />
     </>
   );
 }
