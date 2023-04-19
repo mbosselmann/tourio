@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import Card from "../components/Card.js";
-import useSWR from "swr";
 import Link from "next/link.js";
-import { StyledLink } from "../components/StyledLink.js";
+import styled from "styled-components";
+import useSWR from "swr";
+import Card from "@/components/Card.js";
+import { StyledLink } from "@/components/StyledLink.js";
 
 const List = styled.ul`
   list-style: none;

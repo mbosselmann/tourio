@@ -1,4 +1,4 @@
-import { getPlace, deletePlace, updatePlace } from "../../../../helpers/db.js";
+import { getPlace, deletePlace, updatePlace } from "@/helpers/db.js";
 
 export default async function handler(request, response) {
   switch (request.method) {

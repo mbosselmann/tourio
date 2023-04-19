@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 import useSWR from "swr";
-import Form from "../../../components/Form.js";
-import { StyledLink } from "../../../components/StyledLink.js";
+import Form from "@/components/Form.js";
+import { StyledLink } from "@/components/StyledLink.js";
 import useSWRMutation from "swr/mutation";
 
 async function editPlace(url, { arg: place }) {

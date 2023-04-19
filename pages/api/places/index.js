@@ -1,4 +1,4 @@
-import { getAllPlaces, createPlace } from "../../../helpers/db.js";
+import { getAllPlaces, createPlace } from "@/helpers/db.js";
 
 export default async function handler(request, response) {
   switch (request.method) {
